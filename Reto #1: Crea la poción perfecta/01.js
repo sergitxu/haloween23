@@ -2,14 +2,12 @@ function createMagicPotion(potions, target) {
     let magicPotions = [];
     for(let i = 0; i < potions.length; i++) {
         for(let j = i + 1; j < potions.length; j++) {
-            console.log(i,j);
             if(potions[i] + potions[j] === target) {
                 magicPotions.push([i,j])
             }
         }
     }
     if(magicPotions) {
-        console.log(magicPotions)
         const sortedArr = magicPotions.sort((a, b) => a[1] - b[1]);
         return sortedArr[0];
     }
