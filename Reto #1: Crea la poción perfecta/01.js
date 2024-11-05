@@ -1,15 +1,14 @@
 function createMagicPotion(potions, target) {
     let magicPotions = [];
-    for(let i = 0; i < potions.length; i++) {
+    for(let i = 0; i < potions.length -1; i++) {
         for(let j = i + 1; j < potions.length; j++) {
             if(potions[i] + potions[j] === target) {
                 magicPotions.push([i,j])
             }
         }
     }
-    if(magicPotions) {
-        const sortedArr = magicPotions.sort((a, b) => a[1] - b[1]);
-        return sortedArr[0];
+    if(magicPotions.length > 0) {
+        return magicPotions.sort((a, b) => a[1] - b[1])[0];
     }
     return undefined;
 }
