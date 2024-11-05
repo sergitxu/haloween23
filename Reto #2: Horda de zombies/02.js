@@ -1,18 +1,16 @@
 function battleHorde(zombies, humans) {
-    const rounds = String(zombies).length;
-    let resto = 0;
-    for(i=0; i<rounds; i++) {
-        console.log(Number(String(zombies)[i]), Number(String(humans)[i]))
-        resto = Number(String(zombies)[i]) - Number(String(humans)[i]) + resto;
-        console.log(resto)
-    }
-    if (resto > 0) {
-        return (`${resto}z`);
-    } else if (resto < 0) {
-        return (`${-resto}h`);
-    }
-    return 'x'
-  }
+    const zombieArray = String(zombies).split('').map(Number);
+    const humanArray = String(humans).split('').map(Number);
+  
+    const result = zombieArray.reduce((acc, zombieCount, index) => {
+      const humanCount = humanArray[index] || 0;
+      return acc + zombieCount - humanCount;
+    }, 0);
+  
+    if (result > 0) return `${result}z`;
+    if (result < 0) return `${-result}h`;
+    return 'x';
+}
 
 // TESTS
 const assert = require('assert');
